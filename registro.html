@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro</title>
+  </head>
+  <body>
+    <h1>Crear un Usuario</h1>
+    <form action="registro.php" method="POST">
+      <table border="0" align="center">
+        <tr>
+          <td>
+            Nombre(s):
+          </td>
+          <td>
+            <label for="name"></label>
+            <input type="text" name="nombre" id="name" required  />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Apellidos:
+          </td>
+          <td>
+            <label for="lastname"></label>
+            <input type="text" name="apellido" id="lastname" required  />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Nombre de Usuario:
+          </td>
+          <td>
+            <label for="user"></label>
+            <input type="text" name="usuario" id="user" required  />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Correo Electronico:
+          </td>
+          <td>
+            <label for="email"></label>
+            <input type="email" name="correo" id="email" required  />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Contraseña:
+          </td>
+          <td>
+            <label for="password"></label>
+            <input type="password" name="password" id="password"  required />
+          </td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="center">
+            <input type="submit" name="btnRegistro" id="enviar" value="Registrarse"/>
+          </td>
+          <td align="center">
+            <input type="reset" name="btnRegresar" id="regresar" value="Cancelar" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
