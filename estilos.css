@@ -42,3 +42,15 @@ body{
     margin: 4px 2px;
     cursor: pointer;
 }
+
+/*Botón Falso*/
+.buttonV1 {
+    background-color: whitesmoke;
+    border: 1px solid #360161;
+    padding: 15px 32px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 15px;
+    color:  #360161;
+    margin: 4px 2px;
+    cursor: pointer;
