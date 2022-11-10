@@ -40,26 +40,34 @@ if(isset($_POST["btnInicio"])){
 if(isset($_POST["btnRegistro"])){
     $sqlverificar = mysqli_query($connection,"SELECT * from tabla_form where correo = '".$correo."'");
     $sqlverificarus = mysqli_query($connection,"SELECT * from tabla_form where usuario = '".$usuario."'");
-    if((mysqli_num_rows($sqlverificar)==0)&&(mysqli_num_rows($sqlverificarus)==0)){
-        $pass_fuer = password_hash($password, PASSWORD_DEFAULT);
-        $sqlgrabar = "INSERT INTO tabla_form(nombre, apellido, usuario, correo, password) VALUES ('$nombre','$apellido','$usuario','$correo','$pass_fuer')";
-        if(mysqli_query($connection,$sqlgrabar)){
-            echo "<script> alert('Usuario registrado con EXITO'); window.location='Logueo.html' </script>";
-        }else{
-            echo "Error: ".$sql."<br>".mysqli_error($connection);
-        }    
-    }else if(mysqli_num_rows($sqlverificar)==1){
-        echo "<script> alert('Correo ya registrado'); window.location='registro.html' </script>";
-    }else if(mysqli_num_rows($sqlverificarus)==1){
-        echo "<script> alert('Usuario ya registrado'); window.location='registro.html' </script>";
+    if(empty($_POST['passwprd']) || empty($_POST['nombre']) || empty($_POST['contraseña']) || empty($_POST['usuario'])|| empty($_POST['correo'])){
+        echo "<script> alert('Algún campo esta VACÍO'); window.location='registro.html' </script>";
+    }else{
+        if((mysqli_num_rows($sqlverificar)==0)&&(mysqli_num_rows($sqlverificarus)==0)){
+            $pass_fuer = password_hash($password, PASSWORD_DEFAULT);
+            $sqlgrabar = "INSERT INTO tabla_form(nombre, apellido, usuario, correo, password) VALUES ('$nombre','$apellido','$usuario','$correo','$pass_fuer')";
+            if(mysqli_query($connection,$sqlgrabar)){
+                echo "<script> alert('Usuario registrado con EXITO'); window.location='Logueo.html' </script>";
+            }else{
+                echo "Error: ".$sql."<br>".mysqli_error($connection);
+            }    
+        }else if(mysqli_num_rows($sqlverificar)==1){
+            echo "<script> alert('Correo ya registrado'); window.location='registro.html' </script>";
+        }else if(mysqli_num_rows($sqlverificarus)==1){
+            echo "<script> alert('Usuario ya registrado'); window.location='registro.html' </script>";
+    
+        }
     }
 }       
-
-//if(isset($_POST['btncerrar']))
-//{
-  //  session_destroy();
-    //header('location: index.php');
-//}
+//Botón Regresar
+if(isset($_POST['btnRegresar'])){
+    echo "<script> window.location='Logueo.html' </script>";
+}
+//Botón Cerrar Sesión 
+if(isset($_POST['btnCerrar'])){
+    session_destroy();
+    header('location: Logueo.html');
+}
     
 ?>
 
